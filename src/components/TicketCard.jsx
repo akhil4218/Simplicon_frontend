@@ -65,9 +65,9 @@ export default function TicketCard(props) {
             Created on {props.createdDate.substring(0, 10)}
           </h5>
           <p className="ticket-card-heading" style={{ fontSize: "16px", fontWeight: "bold", margin: "0" }}>{props.title}</p>
-          {/*<h5 className="ticket-description">*/}
-          {/*  By <span>{props.author}</span>*/}
-          {/*</h5>*/}
+          <h5 className="ticket-description">
+            By <span>{props.author}</span>
+          </h5>
         </CardContent>
       </Card>
 
