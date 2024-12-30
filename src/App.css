@@ -24,19 +24,6 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
-.note {
-      background-color: #f9f9f9;
-      border-left: 5px solid orangered;
-      padding: 15px;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: black;
-      margin: 20px 0;
-    }
-.note strong {
-      font-weight: bold;
-}
-
 
 .ticket-header-background {
   background-color: #f4f4f4;

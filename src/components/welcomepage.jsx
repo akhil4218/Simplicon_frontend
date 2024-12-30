@@ -1,14 +1,6 @@
 import React from "react";
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
-    TableRow,
-    TableSortLabel,
-    Paper,
-} from "@material-ui/core";
+import CoreServices from "./CoreServices";
+import RefundSection from "./refundSection";
 
 const taxOptions = [
     {label: "Federal Regular", value: "https://www.irs.gov/payments/direct-pay"},
@@ -116,7 +108,7 @@ const refundOptionsList = [
 ];
 
 const taxRecordsList = [
-    {label: "Get Transcript by Mail", value: "https://sa.www4.irs.gov/eauth/pub/login.jsp?Data=VGFyZ2V0TG9BPUY%253D&amp;TYPE=33554433&amp;REALMOID=06-000e9548-6cd3-16f7-9748-483c0adb4007&amp;GUID=&amp;SMAUTHREASON=0&amp;METHOD=GET&amp;SMAGENTNAME=UOkC7yx4eMTO24FGxPfBRb5q3Mj3Xh3pyXfBEjYyHJ97nGCXu16wx5MzFHjfZmlG&amp;TARGET=-SM-https%3a%2f%2fsa%2ewww4%2eirs%2egov%2ficce--core%2fload%2fgettrans%2fpages%2favailableTranscripts%2exhtml"},
+    {label: "Get Transcript Online", value: "https://sa.www4.irs.gov/eauth/pub/login.jsp?Data=VGFyZ2V0TG9BPUY%253D&amp;TYPE=33554433&amp;REALMOID=06-000e9548-6cd3-16f7-9748-483c0adb4007&amp;GUID=&amp;SMAUTHREASON=0&amp;METHOD=GET&amp;SMAGENTNAME=UOkC7yx4eMTO24FGxPfBRb5q3Mj3Xh3pyXfBEjYyHJ97nGCXu16wx5MzFHjfZmlG&amp;TARGET=-SM-https%3a%2f%2fsa%2ewww4%2eirs%2egov%2ficce--core%2fload%2fgettrans%2fpages%2favailableTranscripts%2exhtml"},
     {label: "Get Transcript by Mail", value: "https://sa.www4.irs.gov/irfof-tra/start.do"},
 ];
 
@@ -128,7 +120,6 @@ const handleDropdownChange = (e) => {
 const WelcomePage = () => {
     return (
         <div style={{fontFamily: "Arial, sans-serif"}}>
-            {/* Main Section */}
             <section style={{textAlign: "center", padding: "50px", backgroundColor: "#F9F9F9"}}>
                 <h1 style={{fontSize: "2.5em", color: "#2E3A59"}}>Welcome to Simplicon Tax Advisors</h1>
                 <p style={{fontSize: "1.2em", color: "#4A4A4A"}}>
@@ -140,7 +131,6 @@ const WelcomePage = () => {
                 </p>
             </section>
 
-            {/* Features Section */}
             <section style={{padding: "50px", backgroundColor: "#fff"}}>
                 <h2 style={{textAlign: "center", fontSize: "2em", color: "#2E3A59"}}>Why Choose Simplicon Tax
                     Advisors?</h2>
@@ -193,128 +183,137 @@ const WelcomePage = () => {
                 </div>
             </section>
 
+            <div>
+                {/*<section style={{padding: "50px", backgroundColor: "#fff"}}>*/}
+            {/*    <h2 style={{textAlign: "center", fontSize: "2em", color: "#2E3A59"}}>What Our Users Say</h2>*/}
+            {/*    <div style={{display: "flex", justifyContent: "center", gap: "50px", marginTop: "30px"}}>*/}
+            {/*        <div style={{*/}
+            {/*            maxWidth: "300px",*/}
+            {/*            textAlign: "center",*/}
+            {/*            border: "1px solid #ddd",*/}
+            {/*            padding: "20px",*/}
+            {/*            borderRadius: "5px"*/}
+            {/*        }}>*/}
+            {/*            <p style={{fontSize: "1em", color: "#7A7A7A", fontStyle: "italic"}}>*/}
+            {/*                "Simplicon Tax Advisors made filing taxes so easy! I got my refund within weeks and had no*/}
+            {/*                trouble at all."*/}
+            {/*            </p>*/}
+            {/*            <h4 style={{fontSize: "1.2em", color: "#0061F2"}}>John D.</h4>*/}
+            {/*        </div>*/}
+            {/*        <div style={{*/}
+            {/*            maxWidth: "300px",*/}
+            {/*            textAlign: "center",*/}
+            {/*            border: "1px solid #ddd",*/}
+            {/*            padding: "20px",*/}
+            {/*            borderRadius: "5px"*/}
+            {/*        }}>*/}
+            {/*            <p style={{fontSize: "1em", color: "#7A7A7A", fontStyle: "italic"}}>*/}
+            {/*                "The step-by-step guidance was incredibly helpful. I felt confident throughout the whole*/}
+            {/*                process."*/}
+            {/*            </p>*/}
+            {/*            <h4 style={{fontSize: "1.2em", color: "#0061F2"}}>Sarah L.</h4>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
+            </div>
 
-            {/* Testimonials Section */}
-            <section style={{padding: "50px", backgroundColor: "#fff"}}>
-                <h2 style={{textAlign: "center", fontSize: "2em", color: "#2E3A59"}}>What Our Users Say</h2>
-                <div style={{display: "flex", justifyContent: "center", gap: "50px", marginTop: "30px"}}>
-                    <div style={{
-                        maxWidth: "300px",
-                        textAlign: "center",
-                        border: "1px solid #ddd",
-                        padding: "20px",
-                        borderRadius: "5px"
-                    }}>
-                        <p style={{fontSize: "1em", color: "#7A7A7A", fontStyle: "italic"}}>
-                            "Simplicon Tax Advisors made filing taxes so easy! I got my refund within weeks and had no
-                            trouble at all."
-                        </p>
-                        <h4 style={{fontSize: "1.2em", color: "#0061F2"}}>John D.</h4>
-                    </div>
-                    <div style={{
-                        maxWidth: "300px",
-                        textAlign: "center",
-                        border: "1px solid #ddd",
-                        padding: "20px",
-                        borderRadius: "5px"
-                    }}>
-                        <p style={{fontSize: "1em", color: "#7A7A7A", fontStyle: "italic"}}>
-                            "The step-by-step guidance was incredibly helpful. I felt confident throughout the whole
-                            process."
-                        </p>
-                        <h4 style={{fontSize: "1.2em", color: "#0061F2"}}>Sarah L.</h4>
-                    </div>
-                </div>
-            </section>
             <hr/>
-            <section>
-                <Table>
-                    <TableHead>
-                        <TableRow style={{backgroundColor: "#f5f5f5"}}>
-                            <TableCell> <strong> Check Refund Status/Pay Tax Online </strong> </TableCell>
-                            <TableCell></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell><h6> Refund status </h6></TableCell>
-                            <TableCell> <select
-                                name="statesdrop"
-                                id="statesdrop"
-                                style={{width: "140px"}}
-                                onChange={handleDropdownChange}>
-                                {refundOptionsList.map((option, index) => (
-                                    <option key={index} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select> </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell><h6>Pay Tax Online</h6></TableCell>
-                            <TableCell><select
-                                name="statesdrop1"
-                                id="statesdrop1"
-                                style={{width: "140px"}}
-                                onChange={handleDropdownChange}>
-                                {taxOptions.map((option, index) => (
-                                    <option key={index} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select></TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <h6>Get Your Tax Records</h6>
-                            </TableCell>
-                            <TableCell><select
-                                name="statesdrop2"
-                                id="statesdrop2"
-                                style={{width: "140px"}}
-                                onChange={handleDropdownChange}>
-                                {taxRecordsList.map((option, index) => (
-                                    <option key={index} value={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select></TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
+             <RefundSection
+        refundOptionsList={refundOptionsList}
+        taxOptions={taxOptions}
+        taxRecordsList={taxRecordsList}
+        handleDropdownChange={handleDropdownChange}
+      />
+            {/*<section>*/}
+            {/*    <Table>*/}
+            {/*        <TableHead>*/}
+            {/*            <TableRow style={{backgroundColor: "#f5f5f5"}}>*/}
+            {/*                <TableCell> <strong> Check Refund Status/Pay Tax Online </strong> </TableCell>*/}
+            {/*                <TableCell></TableCell>*/}
+            {/*            </TableRow>*/}
+            {/*        </TableHead>*/}
+            {/*        <TableBody>*/}
+            {/*            <TableRow>*/}
+            {/*                <TableCell><h6> Refund status </h6></TableCell>*/}
+            {/*                <TableCell> <select*/}
+            {/*                    name="statesdrop"*/}
+            {/*                    id="statesdrop"*/}
+            {/*                    style={{width: "140px"}}*/}
+            {/*                    onChange={handleDropdownChange}>*/}
+            {/*                    {refundOptionsList.map((option, index) => (*/}
+            {/*                        <option key={index} value={option.value}>*/}
+            {/*                            {option.label}*/}
+            {/*                        </option>*/}
+            {/*                    ))}*/}
+            {/*                </select> </TableCell>*/}
+            {/*            </TableRow>*/}
+            {/*            <TableRow>*/}
+            {/*                <TableCell><h6>Pay Tax Online</h6></TableCell>*/}
+            {/*                <TableCell><select*/}
+            {/*                    name="statesdrop1"*/}
+            {/*                    id="statesdrop1"*/}
+            {/*                    style={{width: "140px"}}*/}
+            {/*                    onChange={handleDropdownChange}>*/}
+            {/*                    {taxOptions.map((option, index) => (*/}
+            {/*                        <option key={index} value={option.value}>*/}
+            {/*                            {option.label}*/}
+            {/*                        </option>*/}
+            {/*                    ))}*/}
+            {/*                </select></TableCell>*/}
+            {/*            </TableRow>*/}
+            {/*            <TableRow>*/}
+            {/*                <TableCell>*/}
+            {/*                    <h6>Get Your Tax Records</h6>*/}
+            {/*                </TableCell>*/}
+            {/*                <TableCell><select*/}
+            {/*                    name="statesdrop2"*/}
+            {/*                    id="statesdrop2"*/}
+            {/*                    style={{width: "140px"}}*/}
+            {/*                    onChange={handleDropdownChange}>*/}
+            {/*                    {taxRecordsList.map((option, index) => (*/}
+            {/*                        <option key={index} value={option.value}>*/}
+            {/*                            {option.label}*/}
+            {/*                        </option>*/}
+            {/*                    ))}*/}
+            {/*                </select></TableCell>*/}
+            {/*            </TableRow>*/}
+            {/*        </TableBody>*/}
+            {/*    </Table>*/}
 
-                <div>
-                    <Table>
-                        <TableHead>
-                            <TableRow style={{backgroundColor: "#f5f5f5"}}>
-                                <TableCell><strong> IRS Contact Information </strong></TableCell>
-                                <TableCell></TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            <TableRow>
-                                <TableCell><h6> IRS Local Office Locator </h6></TableCell>
-                                <TableCell> <a
-                                    href={"https://apps.irs.gov/app/officeLocator/index.jsp"}> https://apps.irs.gov/app/officeLocator/index.jsp </a>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><h6> IRS Contact Number for Individuals </h6></TableCell>
-                                <TableCell> 800-829-1040 </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell><h6> IRS Contact Number for Businesses </h6></TableCell>
-                                <TableCell> 800-829-4933 </TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </div>
+            {/*    <div>*/}
+            {/*        <Table>*/}
+            {/*            <TableHead>*/}
+            {/*                <TableRow style={{backgroundColor: "#f5f5f5"}}>*/}
+            {/*                    <TableCell><strong> IRS Contact Information </strong></TableCell>*/}
+            {/*                    <TableCell></TableCell>*/}
+            {/*                </TableRow>*/}
+            {/*            </TableHead>*/}
+            {/*            <TableBody>*/}
+            {/*                <TableRow>*/}
+            {/*                    <TableCell><h6> IRS Local Office Locator </h6></TableCell>*/}
+            {/*                    <TableCell> <a*/}
+            {/*                        href={"https://apps.irs.gov/app/officeLocator/index.jsp"}> https://apps.irs.gov/app/officeLocator/index.jsp </a>*/}
+            {/*                    </TableCell>*/}
+            {/*                </TableRow>*/}
+            {/*                <TableRow>*/}
+            {/*                    <TableCell><h6> IRS Contact Number for Individuals </h6></TableCell>*/}
+            {/*                    <TableCell> 800-829-1040 </TableCell>*/}
+            {/*                </TableRow>*/}
+            {/*                <TableRow>*/}
+            {/*                    <TableCell><h6> IRS Contact Number for Businesses </h6></TableCell>*/}
+            {/*                    <TableCell> 800-829-4933 </TableCell>*/}
+            {/*                </TableRow>*/}
+            {/*            </TableBody>*/}
+            {/*        </Table>*/}
+            {/*    </div>*/}
 
-                <div className="note">
-                    <strong>Note:</strong> Please make sure to have a copy of your tax return handy while checking the refund status/payment online.
-                </div>
+            {/*    <div className="note">*/}
+            {/*        <strong>Note:</strong> Please make sure to have a copy of your tax return handy while checking the refund status/payment online.*/}
+            {/*    </div>*/}
 
-            </section>
+            {/*</section>*/}
+
+            <CoreServices />
 
             {/* FAQ Section */}
             <section style={{padding: "50px", backgroundColor: "#fff"}}>
