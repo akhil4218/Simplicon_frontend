@@ -26,6 +26,13 @@ export default function App() {
     setOrderBy(column);
 
     const sortedRows = [...rows].sort((a, b) => {
+
+      if (column === "Price") {
+      const priceA = parseFloat(a[column].replace(/[^0-9.-]+/g, "")); // Remove any non-numeric characters
+      const priceB = parseFloat(b[column].replace(/[^0-9.-]+/g, ""));
+      return isAsc ? priceA - priceB : priceB - priceA;
+    }
+
       if (a[column] < b[column]) return isAsc ? 1 : -1;
       if (a[column] > b[column]) return isAsc ? -1 : 1;
       return 0;

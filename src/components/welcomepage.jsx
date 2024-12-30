@@ -309,8 +309,12 @@ const WelcomePage = () => {
                         </TableBody>
                     </Table>
                 </div>
+
+                <div className="note">
+                    <strong>Note:</strong> Please make sure to have a copy of your tax return handy while checking the refund status/payment online.
+                </div>
+
             </section>
-            <hr/>
 
             {/* FAQ Section */}
             <section style={{padding: "50px", backgroundColor: "#fff"}}>

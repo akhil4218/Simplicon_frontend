@@ -1,6 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
+import {API} from "../backend";
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        details: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            console.log(formData);
+            const response = await fetch(`${API}/sendEmail`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            const result = await response.json();
+            if (response.ok) {
+                alert('Message sent successfully!');
+            } else {
+                alert('Bad response');
+            }
+        } catch (error) {
+            console.error('Error: ', error);
+            alert('Failed to send message');
+        }
+    };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between', padding: '20px' }}>
       <div style={{ flex: 1, paddingRight: '20px' }}>
@@ -9,12 +49,6 @@ const Contact = () => {
                 <span className="mb-4 block text-base font-semibold text-primary">
                   Contact Us
                 </span>
-                  <h2 className="mb-6 text-[32px] font-bold uppercase text-dark dark:text-white sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                      GET IN TOUCH WITH US
-                  </h2>
-                  <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                      Hyderabad
-                  </p>
                   <div className="mb-8 flex w-full max-w-[370px]">
                       <div
                           className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -36,7 +70,7 @@ const Contact = () => {
                               Our Location
                           </h4>
                           <p className="text-base text-body-color dark:text-dark-6">
-                              Hyderabad, India
+                              KPHB , Hyderabad, 500072
                           </p>
                       </div>
                   </div>
@@ -77,7 +111,8 @@ const Contact = () => {
                               Phone Number
                           </h4>
                           <p className="text-base text-body-color dark:text-dark-6">
-                              (+91) 11111111
+                              (+91) 7093208797
+                              (+91) 7093218797
                           </p>
                       </div>
                   </div>
@@ -103,7 +138,7 @@ const Contact = () => {
                               Email Address
                           </h4>
                           <p className="text-base text-body-color dark:text-dark-6">
-                              info@yourdomain.com
+                              info@simplicontaxadvisors.com
                           </p>
                       </div>
                   </div>
@@ -111,37 +146,39 @@ const Contact = () => {
           </div>
       </div>
         <div style={{flex: 1}}>
-            <form style={{alignItems: 'right', color: 'red', width: '700%'}}>
-                <ContactInputBox
+            <form onSubmit={handleSubmit}>
+                <input
                     type="text"
                     name="name"
                     placeholder="Your Name"
-                    style={{width: "370px"}}
+                    style={{width: '370px'}}
+                    value={formData.name}
+                    onChange={handleChange}
                 />
-                <ContactInputBox
-                    type="text"
+                <input
+                    type="email"
                     name="email"
                     placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleChange}
                 />
-                <ContactInputBox
+                <input
                     type="text"
                     name="phone"
                     placeholder="Your Phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                 />
-                <ContactTextArea
-                    row="6"
-                    placeholder="Your Message"
+               <textarea
+                    rows="6"
                     name="details"
-                    defaultValue=""
+                    placeholder="Your Message"
+                    value={formData.details}
+                    onChange={handleChange}
                 />
-                <div>
-                    <button
-                        type="submit"
-                        className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
-                    >
-                        Send Message
-                    </button>
-                </div>
+                <button
+                    type="submit"
+                    className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"> Send Message </button>
             </form>
         </div>
     </div>
